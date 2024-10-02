@@ -71,29 +71,32 @@ const ProductDetails = () => {
 
 
     return (
-        <Box
-            sx={{
-                width: '90%',
-                display: 'flex', justifyContent: 'center', alignItems: 'center',
-                margin: '50px auto', py: 3,
-                border: '1px solid #ddd',
-                borderRadius: '5px'
-            }}>
-            <Box sx={{ px: 7 }}>
-                <img src={product.image} alt={product.title} width="200px" />
+        <Box sx={{
+            width: '80%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: '50px auto',
+            py: 3,
+            border: '1px solid #ddd',
+            borderRadius: '5px',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+            backgroundColor: '#fff',
+        }}>
+            <Box sx={{ px: 3 }}>
+                <img src={product.image} alt={product.title} width="250px" />
             </Box>
-            <Box>
+            <Box sx={{ px: 4 }}>
                 <Typography gutterBottom variant="h4"> {product.title} </Typography>
-                <Typography gutterBottom variant="body1"> {product.description} </Typography>
+                <Typography variant="body1" gutterBottom>
+                    {product.description}
+                </Typography>
                 <Typography variant='h6' sx={{ my: 3, color: '#1976d2', fontWeight: 'bold' }}>
                     Price: ${product.price}
                 </Typography>
-                <Typography
-                    variant='subtitle2'
-                    sx={{ display: 'flex', alignItems: 'center' }}
-                >
+                <Typography variant='subtitle2' sx={{ display: 'flex', alignItems: 'center' }}>
                     Quantity:
-                    <Box sx={{ mx: 10 }} >
+                    <Box sx={{ mx: 2 }} >
                         <Button variant='outlined' sx={btn} onClick={removeItem}> - </Button>
                         <Button variant='text' sx={{ color: 'black' }}> {quantity} </Button>
                         <Button variant='outlined' sx={btn} onClick={addItem}> + </Button>

@@ -14,7 +14,7 @@ const TopNav = () => {
         <AppBar position="static">
             <Toolbar sx={{ mx: 5 }}>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'white' }}>
-                    <NavLink to='/'>
+                    <NavLink to='/' style={{ textDecoration: 'none' }}>
                         <span style={{ color: 'white' }}>E-commerce Store</span>
                     </NavLink>
                 </Typography>

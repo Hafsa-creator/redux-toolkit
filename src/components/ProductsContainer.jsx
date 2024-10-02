@@ -30,7 +30,7 @@ const ProductsContainer = () => {
             {products.map((item) => (
                 <Card   
                     variant="outlined"
-                    sx={{ width: '19vw' }}
+                    sx={{ width: '21vw' }}
                     key={item.id}
                 >
                     <NavLink to={`/product-details/${item.id}`} style={{ textDecoration: 'none' }}>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // material ui
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, CircularProgress } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { productDetails } from '../features/detailsSlice';
@@ -15,6 +15,7 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
 
     const product = useSelector(state => state.details.product);
+    const loading = useSelector(state => state.details.loading);
     const cartItems = useSelector(state => state.cart.cartItems);
 
 
@@ -55,7 +56,11 @@ const ProductDetails = () => {
     };
 
     // Loader
-    if (!product) return <Typography>Loading...</Typography>;
+    if (loading) return (
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '150px' }}>
+            <CircularProgress />
+        </Box>
+    );
 
 
     return (
@@ -98,9 +103,9 @@ export default ProductDetails;
 const btn = {
     backgroundColor: '#ddd',
     color: 'black',
-    
+
     border: 'none',
     borderRadius: '5px',
-    
+
     padding: '2px',
 }

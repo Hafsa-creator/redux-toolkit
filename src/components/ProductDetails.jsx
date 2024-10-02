@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // material ui
-import { Box, Button, Typography, CircularProgress } from '@mui/material';
+import { Box, Button, Typography, CircularProgress, Divider } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { productDetails } from '../features/detailsSlice';
@@ -71,31 +71,47 @@ const ProductDetails = () => {
 
 
     return (
-        <Box sx={{
-            width: '80%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: '50px auto',
-            py: 3,
-            border: '1px solid #ddd',
-            borderRadius: '5px',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-            backgroundColor: '#fff',
-        }}>
-            <Box sx={{ px: 3 }}>
-                <img src={product.image} alt={product.title} width="250px" />
+        <Box
+            sx={{
+                width: '97vw',
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                margin: '20px auto',
+                border: '1px solid #ddd',
+                backgroundColor: '#fff',
+            }}>
+            {/* product image */}
+            <Box sx={{
+                display: 'inline-flex', justifyContent: 'center',
+                width: '60%', height: '100%', margin: 'auto', py: 2,
+            }}>
+                <img src={product.image} alt={product.title} width="320px" />
             </Box>
-            <Box sx={{ px: 4 }}>
-                <Typography gutterBottom variant="h4"> {product.title} </Typography>
-                <Typography variant="body1" gutterBottom>
-                    {product.description}
+            {/* product details */}
+            <Box sx={{ p: 4, width: '40%', border: '1px solid #ddd' }}>
+
+                {/* title */}
+                <Typography variant="h4" sx={{ my: 3 }}>
+                    {product.title}
                 </Typography>
-                <Typography variant='h6' sx={{ my: 3, color: '#1976d2', fontWeight: 'bold' }}>
+                {/* price */}
+                <Typography variant='h6' sx={{ color: 'grey', fontWeight: 'bold' }}>
                     Price: ${product.price}
                 </Typography>
-                <Typography variant='subtitle2' sx={{ display: 'flex', alignItems: 'center' }}>
-                    Quantity:
+
+                <Divider sx={{ my: 2 }} />
+
+                {/* description */}
+                <Typography variant="body1" sx={{ my: 3.5, textAlign: 'justify' }}>
+                    {product.description}
+                </Typography>
+
+                <Divider sx={{ my: 5 }} />
+
+                {/* Quantity */}
+                <Typography component='h4' sx={{ display: 'flex', alignItems: 'center' }}>
+                    <b>Quantity:</b>
                     <Box sx={{ mx: 2 }} >
                         <Button variant='outlined' sx={btn} onClick={removeItem}> - </Button>
                         <Button variant='text' sx={{ color: 'black' }}> {quantity} </Button>

@@ -84,12 +84,12 @@ const ProductDetails = () => {
             {/* product image */}
             <Box sx={{
                 display: 'inline-flex', justifyContent: 'center',
-                width: '60%', height: '100%', margin: 'auto', py: 2,
+                width: '40%', height: '100%', margin: 'auto', py: 2,
             }}>
                 <img src={product.image} alt={product.title} width="320px" />
             </Box>
             {/* product details */}
-            <Box sx={{ p: 4, width: '40%', border: '1px solid #ddd' }}>
+            <Box sx={{ p: 4, width: '60%', border: '1px solid #ddd' }}>
 
                 {/* title */}
                 <Typography variant="h4" sx={{ my: 3 }}>
@@ -103,7 +103,7 @@ const ProductDetails = () => {
                 <Divider sx={{ my: 2 }} />
 
                 {/* description */}
-                <Typography variant="body1" sx={{ my: 3.5, textAlign: 'justify' }}>
+                <Typography variant="body1" sx={{ my: 3.5 }}>
                     {product.description}
                 </Typography>
 

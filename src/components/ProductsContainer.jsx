@@ -5,6 +5,7 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 // redux toolkit
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../features/productSlice';
+import { Height } from '@mui/icons-material';
 
 
 const ProductsContainer = () => {
@@ -30,24 +31,33 @@ const ProductsContainer = () => {
             {products.map((item) => (
                 <Card   
                     variant="outlined"
-                    sx={{ width: '21vw' }}
+                    sx={{ width: '30%', display: "flex", flexDirection: "column", flexWrap: "wrap", gap: "2-" }}
                     key={item.id}
                 >
                     <NavLink to={`/product-details/${item.id}`} style={{ textDecoration: 'none' }}>
                         <CardContent sx={{ color: 'black' }}>
-                            <Typography
-                                sx={{ display: 'flex', justifyContent: 'center', width: '100%', mb: 2 }}
+                            <Typography 
+                               // sx={{ display: 'flex', justifyContent: 'center', width: '100%', my: 3 }}
                             >
+                                <div sx={{
+                                    border: "1px solid #000000",
+                                    padding: "20px"
+                                }}>
+                                        Testing
+                                </div>
                                 <img
                                     src={item.image}
                                     alt="Product Image"
-                                    width='120px'
-                                    height='140px'
+                                    // width='150px'
+                                    // height='170px'
+                                    width= "100%"
                                 />
                             </Typography>
-                            <Typography component="div">
-                                {item.title} <br />
-                                <b>${item.price}</b>
+                            <Typography component="div" gutterBottom sx={{ my: 2 }}>
+                                {item.title}
+                            </Typography>
+                            <Typography component="div" sx={{ color: 'grey', fontWeight: 700 }} >
+                                ${item.price}
                             </Typography>
                         </CardContent>
                     </NavLink>

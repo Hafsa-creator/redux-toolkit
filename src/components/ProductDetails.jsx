@@ -32,7 +32,7 @@ const ProductDetails = () => {
 
     const addItem = () => {
         const existingItem = cartItems[product.id];
-        const newQuantity = existingItem ? existingItem.quantity + 1 : 0;
+        const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
 
         if (newQuantity <= 10) {
             dispatch(addItemsToCart({ ...product, quantity: newQuantity }));
@@ -50,27 +50,35 @@ const ProductDetails = () => {
                 setQuantity(existingItem.quantity - 1);
             } else {
                 dispatch(removeItemsFromCart(product.id));
-                setQuantity(1);
+                setQuantity(0); // Reset quantity when removing last item
             }
         }
     };
 
+
     // Loader
     if (loading) return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '150px' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
             <CircularProgress />
+        </Box>
+    );
+    // If product is null after loading, show an error message
+    if (!product) return (
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+            <Typography variant="h6">Product not found. Please try again.</Typography>
         </Box>
     );
 
 
     return (
-        <Box sx={{
-            width: '90%',
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            margin: '50px auto', py: 3,
-            border: '1px solid #ddd',
-            borderRadius: '5px'
-        }}>
+        <Box
+            sx={{
+                width: '90%',
+                display: 'flex', justifyContent: 'center', alignItems: 'center',
+                margin: '50px auto', py: 3,
+                border: '1px solid #ddd',
+                borderRadius: '5px'
+            }}>
             <Box sx={{ px: 7 }}>
                 <img src={product.image} alt={product.title} width="200px" />
             </Box>
@@ -86,12 +94,11 @@ const ProductDetails = () => {
                 >
                     Quantity:
                     <Box sx={{ mx: 10 }} >
-                        <Button variant='outlined' style={btn} onClick={removeItem}> - </Button>
+                        <Button variant='outlined' sx={btn} onClick={removeItem}> - </Button>
                         <Button variant='text' sx={{ color: 'black' }}> {quantity} </Button>
-                        <Button variant='outlined' style={btn} onClick={addItem}> + </Button>
+                        <Button variant='outlined' sx={btn} onClick={addItem}> + </Button>
                     </Box>
                 </Typography>
-
             </Box>
         </Box>
     );
@@ -100,12 +107,11 @@ const ProductDetails = () => {
 export default ProductDetails;
 
 
+// button styling
 const btn = {
     backgroundColor: '#ddd',
     color: 'black',
-
     border: 'none',
     borderRadius: '5px',
-
     padding: '2px',
-}
+};

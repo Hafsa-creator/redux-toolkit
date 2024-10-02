@@ -28,7 +28,7 @@ const ProductsContainer = () => {
             }}
         >
             {products.map((item) => (
-                <Card
+                <Card   
                     variant="outlined"
                     sx={{ width: '19vw' }}
                     key={item.id}

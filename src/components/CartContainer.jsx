@@ -1,5 +1,5 @@
 import React from 'react';
-import "./stylesheets/cart.css";
+import "./stylesheets/cart.modules.css";
 // redux toolkit
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemsToCart, removeItemsFromCart } from '../features/cartSlice';
@@ -7,8 +7,8 @@ import { addItemsToCart, removeItemsFromCart } from '../features/cartSlice';
 
 const CartPage = () => {
 
-    const cartItems = useSelector(state => state.cartItems);
-    const totalItems = useSelector((state) => state.totalQuantity);
+    const cartItems = useSelector(state => state.cart.cartItems);
+    const totalItems = useSelector((state) => state.cart.totalQuantity);
     const dispatch = useDispatch();
 
 

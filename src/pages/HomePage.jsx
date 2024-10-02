@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import TopNav from './common/TopNav'
+import TopNav from '../components/common/TopNav'
 
 
 const HomePage = () => {

@@ -1,9 +1,11 @@
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-// pages & components
+// root page 
 import HomePage from './pages/HomePage'
+// components
 import CartPage from './components/CartContainer'
 import ProductsContainer from './components/ProductsContainer'
+import ProductDetails from './components/ProductDetails'
 
 
 function App() {
@@ -18,9 +20,13 @@ function App() {
           element: <ProductsContainer />
         },
         {
+          path: '/product-details/:id',
+          element: <ProductDetails />
+        },
+        {
           path: '/cart-items',
           element: <CartPage />
-        }
+        },
       ]
     }
   ])

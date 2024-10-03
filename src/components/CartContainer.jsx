@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// stylesheet
+// material ui
 import "./stylesheets/cart.modules.css";
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Paper } from '@mui/material';
 // redux toolkit
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemsToCart, removeItemsFromCart } from '../features/cartSlice';
@@ -38,55 +39,64 @@ const CartPage = () => {
 
 
     return (
-        <div className='cart-container'>
+        <Box sx={{ p: 2, m: 4 }}>
+            
             {/* Cart Header */}
-            <h2 className="cart-title">Your Cart ({totalItems} items)</h2>
+            <Typography variant="h5" gutterBottom>
+                Your Cart ({totalItems} items)
+            </Typography>
 
             {/* Cart Table */}
-            <table className="cart-table">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
+            <TableContainer component={Paper}>
+                <Table>
 
-                {Object.keys(cartItems).length > 0 ? (
-                    Object.values(cartItems).map(item => (
+                    {/* table header */}
+                    <TableHead sx={{ backgroundColor: '#f4f4f4' }}>
+                        <TableRow>
+                            <TableCell>Item</TableCell>
+                            <TableCell>Price</TableCell>
+                            <TableCell>Quantity</TableCell>
+                            <TableCell>Total</TableCell>
+                        </TableRow>
+                    </TableHead>
 
-                        <tbody key={item?.id}>
-                            <tr>
-                                <td className="cart-item">
-                                    <img src={item?.image} alt="Product Image" width='79px' height='88px' />
-                                    <NavLink to={`/product-details/${item?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                                        <span className="item-title">{item?.title}</span>
-                                    </NavLink>
-                                </td>
-                                <td className="cart-price"> {item?.price} </td>
-                                <td className="cart-quantity">
-                                    <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
-                                    <span>{item?.quantity}</span>
-                                    <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
-                                </td>
-                                <td className="cart-total">${(item?.quantity * item?.price).toFixed(2)}</td>
-                            </tr>
-                        </tbody>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan="4">No items in the cart.</td>
-                    </tr>
-                )}
-            </table>
+                    {/* table body */}
+                    <TableBody>
+                        {Object.keys(cartItems).length > 0 ? (
+                            Object.values(cartItems).map(item => (
+
+                                <TableRow key={item?.id}>
+                                    <TableCell>
+                                        <div className='cart-item'>
+                                            <img src={item?.image} alt="Product Image" />
+                                            <NavLink to={`/product-details/${item?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                                                <span>{item?.title}</span>
+                                            </NavLink>
+                                        </div>
+                                    </TableCell>
+                                    <TableCell> {item?.price} </TableCell>
+                                    <TableCell className="cart-quantity">
+                                        <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
+                                        <span>{item?.quantity}</span>
+                                        <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
+                                    </TableCell>
+                                    <TableCell>${(item?.quantity * item?.price).toFixed(2)}</TableCell>
+                                </TableRow>
+                            ))
+                        ) : (
+                            <TableRow>
+                                <TableCell colSpan={4}>No items in the cart.</TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
 
             {/* sub-total */}
-            <div className="total">
-                <span>Grand Total: </span>
-                <span>${subTotal.toFixed(2)}</span>
-            </div>
-        </div >
+            <Box className='total' sx={{ mt: 2 }}>
+                Grand Total: ${subTotal.toFixed(2)}
+            </Box>
+        </Box>
     );
 };
 

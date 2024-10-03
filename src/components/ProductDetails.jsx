@@ -86,7 +86,7 @@ const ProductDetails = () => {
                     width: '40%',
                     // height: '450px',
                     height: { xs: 'auto', sm: '300px', md: '450px', lg: '450px', xl: '900px' },
-                    padding: "30px 0", overflow: 'hidden',
+                    padding: "30px", overflow: 'hidden',
                 }}
             >
                 <img

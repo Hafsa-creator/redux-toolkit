@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 // material ui
 import "./stylesheets/cart.modules.css";
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Paper } from '@mui/material';
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Stack, Paper } from '@mui/material';
 // redux toolkit
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemsToCart, removeItemsFromCart } from '../features/cartSlice';
@@ -40,14 +40,14 @@ const CartPage = () => {
 
     return (
         <Box sx={{ p: 2, m: 4 }}>
-            
+
             {/* Cart Header */}
             <Typography variant="h5" gutterBottom>
                 Your Cart ({totalItems} items)
             </Typography>
 
             {/* Cart Table */}
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} sx={{ overflowX: 'auto', maxWidth: '100%' }}>
                 <Table>
 
                     {/* table header */}
@@ -76,9 +76,15 @@ const CartPage = () => {
                                     </TableCell>
                                     <TableCell> {item?.price} </TableCell>
                                     <TableCell className="cart-quantity">
-                                        <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
-                                        <span>{item?.quantity}</span>
-                                        <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
+                                        <Stack
+                                            direction={{ xs: 'column', sm: 'row' }}
+                                            alignItems="center"
+                                            spacing={1}
+                                        >
+                                            <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
+                                            <span>{item?.quantity}</span>
+                                            <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
+                                        </Stack>
                                     </TableCell>
                                     <TableCell>${(item?.quantity * item?.price).toFixed(2)}</TableCell>
                                 </TableRow>

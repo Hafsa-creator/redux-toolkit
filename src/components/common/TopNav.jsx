@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const TopNav = () => {
 
-    const totalQuantity = useSelector(state => state.cart.totalQuantity);
+    const totalQuantity = useSelector(state => state?.cart?.totalQuantity);
 
     return (
         <AppBar position="static">

@@ -14,9 +14,9 @@ const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const product = useSelector(state => state.details.product);
-    const loading = useSelector(state => state.details.loading);
-    const cartItems = useSelector(state => state.cart.cartItems);
+    const product = useSelector(state => state?.details?.product);
+    const loading = useSelector(state => state?.details?.loading);
+    const cartItems = useSelector(state => state?.cart?.cartItems);
 
 
     useEffect(() => {
@@ -25,14 +25,14 @@ const ProductDetails = () => {
 
     useEffect(() => {
         if (product) {
-            setQuantity(cartItems[product.id]?.quantity || 0); // Set quantity based on cart
+            setQuantity(cartItems[product?.id]?.quantity || 0); // Set quantity based on cart
         }
     }, [product, cartItems]);
 
 
     const addItem = () => {
-        const existingItem = cartItems[product.id];
-        const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
+        const existingItem = cartItems[product?.id];
+        const newQuantity = existingItem ? existingItem?.quantity + 1 : 1;
 
         if (newQuantity <= 10) {
             dispatch(addItemsToCart({ ...product, quantity: newQuantity }));
@@ -43,13 +43,13 @@ const ProductDetails = () => {
     };
 
     const removeItem = () => {
-        const existingItem = cartItems[product.id];
+        const existingItem = cartItems[product?.id];
         if (existingItem) {
             if (existingItem.quantity > 1) {
-                dispatch(removeItemsFromCart(product.id));
-                setQuantity(existingItem.quantity - 1);
+                dispatch(removeItemsFromCart(product?.id));
+                setQuantity(existingItem?.quantity - 1);
             } else {
-                dispatch(removeItemsFromCart(product.id));
+                dispatch(removeItemsFromCart(product?.id));
                 setQuantity(0); // Reset quantity when removing last item
             }
         }
@@ -58,13 +58,13 @@ const ProductDetails = () => {
 
     // Loader
     if (loading) return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', margin: '50px 0' }}>
             <CircularProgress />
         </Box>
     );
     // If product is null after loading, show an error message
     if (!product) return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', margin: '50px 0' }}>
             <Typography variant="h6">Product not found. Please try again.</Typography>
         </Box>
     );
@@ -80,12 +80,18 @@ const ProductDetails = () => {
             }}>
 
             {/* product image */}
-            <Box sx={{
-                display: 'flex', justifyContent: 'center', alignItems: 'center',
-                width: '40%', height: '450px',
-                padding: "30px 0", overflow: 'hidden',
-            }}>
-                <img src={product.image} alt={product.title}
+            <Box
+                sx={{
+                    display: 'flex', justifyContent: 'center', alignItems: 'center',
+                    width: '40%',
+                    // height: '450px',
+                    height: { xs: 'auto', sm: '300px', md: '450px', lg: '450px', xl: '900px' },
+                    padding: "30px 0", overflow: 'hidden',
+                }}
+            >
+                <img
+                    src={product?.image}
+                    alt="Product Image"
                     style={{
                         maxWidth: '100%',
                         maxHeight: '100%',
@@ -95,20 +101,21 @@ const ProductDetails = () => {
             </Box>
 
             {/* product details */}
-            <Box sx={{
-                width: '60%',
-                display: 'flex', flexDirection: 'column',
-                justifyContent: 'space-around',
-                border: '1px solid #ddd', p: 4
-            }}>
-
+            <Box
+                sx={{
+                    width: '60%',
+                    display: 'flex', flexDirection: 'column',
+                    justifyContent: 'space-around',
+                    border: '1px solid #ddd', p: 4
+                }}
+            >
                 {/* title + price */}
                 <Box>
                     <Typography variant="h4">
-                        {product.title}
+                        {product?.title}
                     </Typography>
                     <Typography variant='h6' sx={{ color: 'GrayText', fontWeight: 'bold', mt: 2.5 }}>
-                        Price: ${product.price}
+                        Price: ${product?.price}
                     </Typography>
                 </Box>
 
@@ -117,10 +124,10 @@ const ProductDetails = () => {
                 {/* description */}
                 <Box>
                     <Typography variant="body1">
-                        {product.description}
+                        {product?.description}
                     </Typography>
                 </Box>
-                
+
                 <Divider />
 
                 {/* Quantity */}

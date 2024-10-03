@@ -7,15 +7,15 @@ import { addItemsToCart, removeItemsFromCart } from '../features/cartSlice';
 
 const CartPage = () => {
 
-    const cartItems = useSelector(state => state.cart.cartItems);
-    const totalItems = useSelector((state) => state.cart.totalQuantity);
+    const cartItems = useSelector(state => state?.cart?.cartItems);
+    const totalItems = useSelector((state) => state?.cart?.totalQuantity);
     const dispatch = useDispatch();
 
 
     const addItem = (product) => {
         // dispatch(addItemsToCart(product));
-        const existingItem = cartItems[product.id];
-        const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
+        const existingItem = cartItems[product?.id];
+        const newQuantity = existingItem ? existingItem?.quantity + 1 : 1;
 
         if (newQuantity < 11) {
             dispatch(addItemsToCart({ ...product, quantity: newQuantity }));
@@ -25,13 +25,13 @@ const CartPage = () => {
     };
 
     const removeItem = (product) => {
-        dispatch(removeItemsFromCart(product.id));
+        dispatch(removeItemsFromCart(product?.id));
     };
 
 
     // calculate subtotal
     const subTotal = Object.values(cartItems).reduce((acc, item) => {
-        return acc + (item.price * item.quantity);
+        return acc + (item?.price * item?.quantity);
     }, 0);
 
 
@@ -53,19 +53,20 @@ const CartPage = () => {
 
                 {Object.keys(cartItems).length > 0 ? (
                     Object.values(cartItems).map(item => (
-                        <tbody key={item.id}>
+
+                        <tbody key={item?.id}>
                             <tr>
                                 <td className="cart-item">
-                                    <img src={item.image} alt="Product Image" width='79px' height='88px' />
-                                    <span className="item-title">{item.title}</span>
+                                    <img src={item?.image} alt="Product Image" width='79px' height='88px' />
+                                    <span className="item-title">{item?.title}</span>
                                 </td>
-                                <td className="cart-price"> {item.price} </td>
+                                <td className="cart-price"> {item?.price} </td>
                                 <td className="cart-quantity">
                                     <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
-                                    <span>{item.quantity}</span>
+                                    <span>{item?.quantity}</span>
                                     <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
                                 </td>
-                                <td className="cart-total">${(item.quantity * item.price).toFixed(2)}</td>
+                                <td className="cart-total">${(item?.quantity * item?.price).toFixed(2)}</td>
                             </tr>
                         </tbody>
                     ))

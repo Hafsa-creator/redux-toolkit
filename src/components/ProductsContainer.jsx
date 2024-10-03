@@ -67,7 +67,7 @@ const ProductsContainer = () => {
                                     {item.title}
                                 </Typography>
                                 <Typography component="div" sx={{ fontWeight: 700 }} >
-                                    ${item.price}
+                                    Price: ${item.price}
                                 </Typography>
                             </div>
                         </div>

@@ -73,51 +73,65 @@ const ProductDetails = () => {
     return (
         <Box
             sx={{
-                width: '97vw',
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                margin: '20px auto',
+                width: '97%',
+                display: 'flex', justifyContent: 'center',
                 border: '1px solid #ddd',
-                backgroundColor: '#fff',
+                margin: '30px auto',
             }}>
+
             {/* product image */}
             <Box sx={{
-                display: 'inline-flex', justifyContent: 'center',
-                width: '40%', height: '100%', margin: 'auto', py: 2,
+                display: 'flex', justifyContent: 'center', alignItems: 'center',
+                width: '40%', height: '450px',
+                padding: "30px 0", overflow: 'hidden',
             }}>
-                <img src={product.image} alt={product.title} width="320px" />
+                <img src={product.image} alt={product.title}
+                    style={{
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        objectFit: 'cover',
+                    }}
+                />
             </Box>
+
             {/* product details */}
-            <Box sx={{ p: 4, width: '60%', border: '1px solid #ddd' }}>
+            <Box sx={{
+                width: '60%',
+                display: 'flex', flexDirection: 'column',
+                justifyContent: 'space-around',
+                border: '1px solid #ddd', p: 4
+            }}>
 
-                {/* title */}
-                <Typography variant="h4" sx={{ my: 3 }}>
-                    {product.title}
-                </Typography>
-                {/* price */}
-                <Typography variant='h6' sx={{ color: 'grey', fontWeight: 'bold' }}>
-                    Price: ${product.price}
-                </Typography>
+                {/* title + price */}
+                <Box>
+                    <Typography variant="h4">
+                        {product.title}
+                    </Typography>
+                    <Typography variant='h6' sx={{ color: 'GrayText', fontWeight: 'bold', mt: 2.5 }}>
+                        Price: ${product.price}
+                    </Typography>
+                </Box>
 
-                <Divider sx={{ my: 2 }} />
+                <Divider />
 
                 {/* description */}
-                <Typography variant="body1" sx={{ my: 3.5 }}>
-                    {product.description}
-                </Typography>
-
-                <Divider sx={{ my: 5 }} />
+                <Box>
+                    <Typography variant="body1">
+                        {product.description}
+                    </Typography>
+                </Box>
+                
+                <Divider />
 
                 {/* Quantity */}
-                <Typography component='h4' sx={{ display: 'flex', alignItems: 'center' }}>
-                    <b>Quantity:</b>
-                    <Box sx={{ mx: 2 }} >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Typography> Quantity: </Typography>
+                    <Box sx={{ mx: 3 }} >
                         <Button variant='outlined' sx={btn} onClick={removeItem}> - </Button>
                         <Button variant='text' sx={{ color: 'black' }}> {quantity} </Button>
                         <Button variant='outlined' sx={btn} onClick={addItem}> + </Button>
                     </Box>
-                </Typography>
+                </Box>
             </Box>
         </Box>
     );

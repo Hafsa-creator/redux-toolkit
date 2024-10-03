@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 // material ui
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 // redux toolkit
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../features/productSlice';
-import { Height } from '@mui/icons-material';
 
 
 const ProductsContainer = () => {
@@ -26,6 +25,7 @@ const ProductsContainer = () => {
             margin: '30px 0',
             gap: 3,
         }}>
+            {/* map product cards here */}
             {products.map((item) => (
                 <Card
                     variant="outlined"

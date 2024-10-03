@@ -19,47 +19,58 @@ const ProductsContainer = () => {
 
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                margin: '30px 0',
-                gap: 2,
-            }}
-        >
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            margin: '30px 0',
+            gap: 3,
+        }}>
             {products.map((item) => (
-                <Card   
+                <Card
                     variant="outlined"
-                    sx={{ width: '30%', display: "flex", flexDirection: "column", flexWrap: "wrap", gap: "2-" }}
+                    sx={{
+                        width: { xl: '20%', lg: '30%', md: '45%', sm: '75%', xs: '100%' },
+                        borderColor: 'black',
+                    }}
                     key={item.id}
                 >
                     <NavLink to={`/product-details/${item.id}`} style={{ textDecoration: 'none' }}>
-                        <CardContent sx={{ color: 'black' }}>
-                            <Typography 
-                               // sx={{ display: 'flex', justifyContent: 'center', width: '100%', my: 3 }}
-                            >
-                                <div sx={{
-                                    border: "1px solid #000000",
-                                    padding: "20px"
-                                }}>
-                                        Testing
-                                </div>
+                        <div style={{
+                            color: 'black',
+                            display: 'flex', flexDirection: 'column',
+                            padding: '20px'
+                        }}>
+                            {/* product image */}
+                            <div style={{
+                                display: 'flex', justifyContent: 'center', alignItems: 'center',
+                                height: '250px', overflow: 'hidden',
+                                padding: "20px 0",
+                            }}>
                                 <img
                                     src={item.image}
                                     alt="Product Image"
-                                    // width='150px'
-                                    // height='170px'
-                                    width= "100%"
+                                    style={{
+                                        maxWidth: '100%',
+                                        maxHeight: '100%',
+                                        objectFit: 'cover',
+                                    }}
                                 />
-                            </Typography>
-                            <Typography component="div" gutterBottom sx={{ my: 2 }}>
-                                {item.title}
-                            </Typography>
-                            <Typography component="div" sx={{ color: 'grey', fontWeight: 700 }} >
-                                ${item.price}
-                            </Typography>
-                        </CardContent>
+                            </div>
+                            {/* product details */}
+                            <div style={{
+                                minHeight: '100px',
+                                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                                overflow: 'hidden',
+                            }}>
+                                <Typography component="h2" gutterBottom>
+                                    {item.title}
+                                </Typography>
+                                <Typography component="div" sx={{ fontWeight: 700 }} >
+                                    ${item.price}
+                                </Typography>
+                            </div>
+                        </div>
                     </NavLink>
                 </Card>
             ))}

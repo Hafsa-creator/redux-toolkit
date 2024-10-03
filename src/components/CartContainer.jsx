@@ -48,7 +48,7 @@ const CartPage = () => {
 
             {/* Cart Table */}
             <TableContainer component={Paper} sx={{ overflowX: 'auto', maxWidth: '100%' }}>
-                <Table>
+                <Table className='cart-table'>
 
                     {/* table header */}
                     <TableHead sx={{ backgroundColor: '#f4f4f4' }}>

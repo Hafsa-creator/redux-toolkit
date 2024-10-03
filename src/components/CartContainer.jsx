@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+// stylesheet
 import "./stylesheets/cart.modules.css";
 // redux toolkit
 import { useDispatch, useSelector } from 'react-redux';
@@ -58,7 +60,9 @@ const CartPage = () => {
                             <tr>
                                 <td className="cart-item">
                                     <img src={item?.image} alt="Product Image" width='79px' height='88px' />
-                                    <span className="item-title">{item?.title}</span>
+                                    <NavLink to={`/product-details/${item?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                                        <span className="item-title">{item?.title}</span>
+                                    </NavLink>
                                 </td>
                                 <td className="cart-price"> {item?.price} </td>
                                 <td className="cart-quantity">
@@ -82,7 +86,7 @@ const CartPage = () => {
                 <span>Grand Total: </span>
                 <span>${subTotal.toFixed(2)}</span>
             </div>
-        </div>
+        </div >
     );
 };
 

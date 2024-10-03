@@ -33,7 +33,7 @@ const ProductsContainer = () => {
                     variant="outlined"
                     key={item?.id}
                     sx={{
-                        width: { xl: '20%', lg: '30%', md: '45%', sm: '75%', xs: '100%' },
+                        width: { xl: '20%', lg: '30%', md: '45%', sm: '75%', xs: '90%' },
                         borderColor: 'black',
                     }}
                 >

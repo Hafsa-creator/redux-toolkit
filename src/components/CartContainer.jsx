@@ -39,7 +39,7 @@ const CartPage = () => {
 
 
     return (
-        <Box sx={{ p: 2, m: 4 }}>
+        <Box sx={{ p: 2, m: 3 }}>
 
             {/* Cart Header */}
             <Typography variant="h5" gutterBottom>

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+// persist store
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // slices

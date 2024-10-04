@@ -8,12 +8,12 @@ import detailsSlice from '../features/detailsSlice';
 import cartSlice from '../features/cartSlice';
 
 
-const cartPersistConfig = {
+const persistConfig = {
     key: 'cart',
     storage,
 };
 
-const persistedCartReducer = persistReducer(cartPersistConfig, cartSlice);
+const persistedCartReducer = persistReducer(persistConfig, cartSlice);
 
 const store = configureStore({
     reducer: {

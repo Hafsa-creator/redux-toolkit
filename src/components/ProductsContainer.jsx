@@ -18,38 +18,41 @@ const ProductsContainer = () => {
 
 
     return (
-        <div>
-            {/* Hero Section */}
-            <Box
-                sx={{
-                    backgroundImage: `url('https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    height: '100vh',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: 'white',
-                    mb: 7,
-                    textAlign: 'center'
-                }}
-            >
-                <Typography variant="h3" sx={{ backgroundColor: 'rgba(0,0,0,0.5)', p: 2 }}>
-                    Welcome to Our E-commerce Store
-                </Typography>
-            </Box>
+        //     <div>
+        //         {/* Hero Section */}
+        //         <Box
+        //             sx={{
+        //                 backgroundImage: `url('https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+        //                 backgroundSize: 'cover',
+        //                 backgroundPosition: 'center',
+        //                 height: '100vh',
+        //                 display: 'flex',
+        //                 justifyContent: 'center',
+        //                 alignItems: 'center',
+        //                 color: 'white',
+        //                 mb: 7,
+        //                 textAlign: 'center'
+        //             }}
+        //         >
+        //             <Typography variant="h3" sx={{ backgroundColor: 'rgba(0,0,0,0.5)', p: 2 }}>
+        //                 Welcome to Our E-commerce Store
+        //             </Typography>
+        //         </Box>
+        //     </div>
 
-            {/* cards */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    flexWrap: 'wrap',
-                    gap: 3,
-                }}
-            >
-                {/* map product cards here */}
-                {products.map((item) => (
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                gap: 3,
+                margin: '30px 0'
+            }
+            }
+        >
+            {/* map product cards here */}
+            {
+                products.map((item) => (
                     <Card
                         variant="outlined"
                         key={item?.id}
@@ -100,9 +103,10 @@ const ProductsContainer = () => {
                             </div>
                         </NavLink>
                     </Card>
-                ))}
-            </Box>
-        </div>
+                ))
+            }
+        </Box >
+
     );
 };
 

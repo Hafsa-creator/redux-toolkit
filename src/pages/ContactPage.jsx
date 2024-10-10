@@ -1,12 +1,14 @@
 import React from 'react';
-import { Container, Typography, Box, TextField, Button, Grid2, Paper } from '@mui/material';
+import { Container, Typography, TextField, Button, Grid2, Paper } from '@mui/material';
+
 
 const ContactPage = () => {
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Handle form submission logic here
         alert('Message submitted!');
     };
+
 
     return (
         <Container sx={{ my: 5 }}>
@@ -14,7 +16,8 @@ const ContactPage = () => {
             <Typography variant="h4">
                 Contact Us
             </Typography>
-            <Typography variant="body1" sx={{ mt: 1, mb: 5 }}>
+
+            <Typography variant="body1" sx={{ mt: 1, mb: 3 }}>
                 If you have any questions, feedback, or need assistance, feel free to reach out to us. 
                 We are here to help you!
             </Typography>

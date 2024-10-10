@@ -8,7 +8,7 @@ const HomePage = () => {
     return (
         <>
             <TopNav />
-            <main>
+            <main style={{ paddingTop: '65px' }}>
                 <Outlet />
             </main>
         </>

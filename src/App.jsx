@@ -2,6 +2,8 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // root page 
 import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
 // components
 import CartPage from './components/CartContainer'
 import ProductsContainer from './components/ProductsContainer'
@@ -26,6 +28,14 @@ function App() {
         {
           path: '/cart-items',
           element: <CartPage />
+        },
+        {
+          path: '/about',
+          element: <AboutPage />
+        },
+        {
+          path: '/contact-us',
+          element: <ContactPage />
         },
       ]
     }

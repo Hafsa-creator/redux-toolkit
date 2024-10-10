@@ -6,8 +6,9 @@ import { AppBar, Toolbar, Typography, Badge, Drawer, Box, List, Divider, ListIte
 // icons
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import CallIcon from '@mui/icons-material/Call';
 
 
 const TopNav = () => {
@@ -22,29 +23,33 @@ const TopNav = () => {
     const DrawerList = (
         <Box sx={{ width: 250 }} onClick={toggleDrawer(false)}>
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
+                {['Home', 'About', 'Contact us'].map(text => (
+                    <NavLink to={text === 'Home' ? '/' : text === 'About' ? '/about' : '/contact-us'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ListItem key={text} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {text === 'Home' && <HomeIcon />}
+                                    {text === 'About' && <InfoIcon />}
+                                    {text === 'Contact us' && <CallIcon />}
+                                </ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItemButton>
+                        </ListItem>
+                    </NavLink>
                 ))}
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
+                <NavLink to='/cart-items' style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                <ShoppingCartIcon />
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary="Cart" />
                         </ListItemButton>
                     </ListItem>
-                ))}
+                </NavLink>
             </List>
         </Box>
     );

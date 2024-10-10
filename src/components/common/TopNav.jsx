@@ -56,7 +56,7 @@ const TopNav = () => {
 
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="fixed" sx={{ backgroundColor: 'black' }}>
             <Toolbar sx={{ mx: 2 }}>
 
                 {/* menu icon */}

@@ -18,60 +18,61 @@ const ProductsContainer = () => {
 
 
     return (
-        //     <div>
-        //         {/* Hero Section */}
-        //         <Box
-        //             sx={{
-        //                 backgroundImage: `url('https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
-        //                 backgroundSize: 'cover',
-        //                 backgroundPosition: 'center',
-        //                 height: '100vh',
-        //                 display: 'flex',
-        //                 justifyContent: 'center',
-        //                 alignItems: 'center',
-        //                 color: 'white',
-        //                 mb: 7,
-        //                 textAlign: 'center'
-        //             }}
-        //         >
-        //             <Typography variant="h3" sx={{ backgroundColor: 'rgba(0,0,0,0.5)', p: 2 }}>
-        //                 Welcome to Our E-commerce Store
-        //             </Typography>
-        //         </Box>
-        //     </div>
+        <div>
 
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                gap: 3,
-                margin: '30px 0'
-            }
-            }
-        >
-            {/* map product cards here */}
-            {
-                products.map((item) => (
+            {/* Hero Section */}
+            <Box
+                sx={{
+                    backgroundImage: `url('https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+
+                    height: '100vh',
+                    textAlign: 'center'
+                }}
+            >
+                <Typography variant="h3" sx={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', p: 2 }}>
+                    Welcome to Our E-commerce Store
+                </Typography>
+            </Box>
+
+            {/* Cards Container */}
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexWrap: 'wrap',
+                    gap: 3,
+                    py: 7
+                }}
+            >
+                {/* map product cards here */}
+                {products.map((item) => (
                     <Card
                         variant="outlined"
                         key={item?.id}
                         sx={{
-                            width: { xl: '20%', lg: '30%', md: '40%', sm: '60%', xs: '90%' },
-                            borderColor: 'black',
+                            width: { xl: '20%', lg: '27%', md: '40%', sm: '60%', xs: '90%' },
+                            backgroundColor: '#ffffff',
+                            borderColor: 'rgba(0,0,0,0.1)',
+                            boxShadow: 2,
                         }}
                     >
                         <NavLink to={`/product-details/${item?.id}`} style={{ textDecoration: 'none' }}>
                             <div style={{
                                 color: 'black',
                                 display: 'flex', flexDirection: 'column',
-                                padding: '20px'
+                                padding: '18px'
                             }}>
 
                                 {/* product image */}
                                 <div style={{
                                     display: 'flex', justifyContent: 'center', alignItems: 'center',
-                                    height: '250px', overflow: 'hidden',
+                                    height: '220px', overflow: 'hidden',
                                     padding: "20px 0",
                                 }}>
                                     <img
@@ -96,17 +97,16 @@ const ProductsContainer = () => {
                                     <Typography component="h2" gutterBottom>
                                         {item?.title}
                                     </Typography>
-                                    <Typography component="div" sx={{ fontWeight: 700 }} >
+                                    <Typography component="div" sx={{ fontWeight: 600 }} >
                                         Price: ${item?.price}
                                     </Typography>
                                 </div>
                             </div>
                         </NavLink>
                     </Card>
-                ))
-            }
-        </Box >
-
+                ))}
+            </Box >
+        </div>
     );
 };
 

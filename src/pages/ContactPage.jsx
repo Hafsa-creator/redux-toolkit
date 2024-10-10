@@ -10,15 +10,16 @@ const ContactPage = () => {
 
     return (
         <Container sx={{ my: 5 }}>
-            <Typography variant="h4" gutterBottom>
+
+            <Typography variant="h4">
                 Contact Us
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{ mt: 1, mb: 5 }}>
                 If you have any questions, feedback, or need assistance, feel free to reach out to us. 
                 We are here to help you!
             </Typography>
 
-            <Grid2 container spacing={4}>
+            <Grid2 container spacing={2}>
                 <Grid2 item xs={12} md={6}>
                     <Paper elevation={3} sx={{ p: 4 }}>
                         <Typography variant="h5" gutterBottom>

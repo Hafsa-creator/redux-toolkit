@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // material ui
-import { AppBar, Toolbar, Typography, Badge, Drawer, Box, List, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Badge, Drawer, Box, List, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 // icons
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import CallIcon from '@mui/icons-material/Call';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const TopNav = () => {
@@ -21,7 +22,17 @@ const TopNav = () => {
     };
 
     const DrawerList = (
-        <Box sx={{ width: 250 }} onClick={toggleDrawer(false)}>
+        <Box sx={{ width: 250, display: 'flex', flexDirection: 'column' }} onClick={toggleDrawer(false)}>
+
+            {/* close icon */}
+            <IconButton onClick={toggleDrawer(false)}
+                sx={{ color: 'black', alignSelf: 'flex-end', m: 1 }}>
+                <CloseIcon />
+            </IconButton>
+
+            <Divider />
+
+            {/* menu items */}
             <List>
                 {['Home', 'About', 'Contact us'].map(text => (
                     <NavLink to={text === 'Home' ? '/' : text === 'About' ? '/about' : '/contact-us'} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -38,7 +49,9 @@ const TopNav = () => {
                     </NavLink>
                 ))}
             </List>
+
             <Divider />
+
             <List>
                 <NavLink to='/cart-items' style={{ textDecoration: 'none', color: 'inherit' }}>
                     <ListItem disablePadding>

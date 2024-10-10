@@ -15,17 +15,24 @@ const AboutPage = () => {
                     backgroundImage: `url('https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: 450,
-                    borderRadius: 2,
+
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    color: 'white',
+
+                    height: 450,
+                    borderRadius: 2,
+
                     mb: 5,
                     textAlign: 'center'
                 }}
             >
-                <Typography variant="h3" sx={{ backgroundColor: 'rgba(0,0,0,0.5)', p: 2 }}>
+                <Typography variant="h3"
+                    sx={{
+                        backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', p: 2,
+                        fontSize: { xs: '1.5rem', sm: '2rem', md: '2.8rem' },
+                    }}
+                >
                     About Our E-commerce Web Store
                 </Typography>
             </Box>

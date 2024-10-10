@@ -18,7 +18,7 @@ const ProductsContainer = () => {
 
 
     return (
-        <div>
+        <div style={{ marginTop: '-64px' }}>
 
             {/* Hero Section */}
             <Box
@@ -35,7 +35,12 @@ const ProductsContainer = () => {
                     textAlign: 'center'
                 }}
             >
-                <Typography variant="h3" sx={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', p: 2 }}>
+                <Typography variant="h3"
+                    sx={{
+                        backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', p: 2,
+                        fontSize: { xs: '1.5rem', sm: '2rem', md: '2.8rem' },
+                    }}
+                >
                     Welcome to Our E-commerce Store
                 </Typography>
             </Box>
@@ -56,7 +61,7 @@ const ProductsContainer = () => {
                         variant="outlined"
                         key={item?.id}
                         sx={{
-                            width: { xl: '20%', lg: '27%', md: '40%', sm: '60%', xs: '90%' },
+                            width: { xl: '20%', lg: '27%', md: '30%', sm: '45%', xs: '90%' },
                             backgroundColor: '#ffffff',
                             borderColor: 'rgba(0,0,0,0.1)',
                             boxShadow: 2,

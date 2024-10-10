@@ -39,70 +39,71 @@ const CartPage = () => {
 
 
     return (
-        <Box sx={{ p: 2, m: 3 }}>
+       <div style={{ height: '100vh' }}> <Box sx={{ p: 2, m: 3 }}>
 
-            {/* Cart Header */}
-            <Typography variant="h5" gutterBottom>
-                Your Cart ({totalItems} items)
-            </Typography>
+       {/* Cart Header */}
+       <Typography variant="h5" gutterBottom>
+           Your Cart ({totalItems} items)
+       </Typography>
 
-            {/* Cart Table */}
-            <TableContainer component={Paper} sx={{ overflowX: 'auto', maxWidth: '100%' }}>
-                <Table className='cart-table'>
+       {/* Cart Table */}
+       <TableContainer component={Paper} sx={{ overflowX: 'auto', maxWidth: '100%' }}>
+           <Table className='cart-table'>
 
-                    {/* table header */}
-                    <TableHead sx={{ backgroundColor: '#f4f4f4' }}>
-                        <TableRow>
-                            <TableCell>Item</TableCell>
-                            <TableCell>Price</TableCell>
-                            <TableCell>Quantity</TableCell>
-                            <TableCell>Total</TableCell>
-                        </TableRow>
-                    </TableHead>
+               {/* table header */}
+               <TableHead sx={{ backgroundColor: '#ddd' }}>
+                   <TableRow>
+                       <TableCell>Item</TableCell>
+                       <TableCell>Price</TableCell>
+                       <TableCell>Quantity</TableCell>
+                       <TableCell>Total</TableCell>
+                   </TableRow>
+               </TableHead>
 
-                    {/* table body */}
-                    <TableBody>
-                        {Object.keys(cartItems).length > 0 ? (
-                            Object.values(cartItems).map(item => (
+               {/* table body */}
+               <TableBody>
+                   {Object.keys(cartItems).length > 0 ? (
+                       Object.values(cartItems).map(item => (
 
-                                <TableRow key={item?.id}>
-                                    <TableCell>
-                                        <div className='cart-item'>
-                                            <img src={item?.image} alt="Product Image" />
-                                            <NavLink to={`/product-details/${item?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                                                <span>{item?.title}</span>
-                                            </NavLink>
-                                        </div>
-                                    </TableCell>
-                                    <TableCell> {item?.price} </TableCell>
-                                    <TableCell className="cart-quantity">
-                                        <Stack
-                                            direction={{ xs: 'column', sm: 'row' }}
-                                            alignItems="center"
-                                            spacing={1}
-                                        >
-                                            <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
-                                            <span>{item?.quantity}</span>
-                                            <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
-                                        </Stack>
-                                    </TableCell>
-                                    <TableCell>${(item?.quantity * item?.price).toFixed(2)}</TableCell>
-                                </TableRow>
-                            ))
-                        ) : (
-                            <TableRow>
-                                <TableCell colSpan={4}>No items in the cart.</TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                           <TableRow key={item?.id}>
+                               <TableCell>
+                                   <div className='cart-item'>
+                                       <img src={item?.image} alt="Product Image" />
+                                       <NavLink to={`/product-details/${item?.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                                           <span>{item?.title}</span>
+                                       </NavLink>
+                                   </div>
+                               </TableCell>
+                               <TableCell> {item?.price} </TableCell>
+                               <TableCell className="cart-quantity">
+                                   <Stack
+                                       direction={{ xs: 'column', sm: 'row' }}
+                                       alignItems="center"
+                                       spacing={1}
+                                   >
+                                       <button className="quantityBtn" onClick={() => removeItem(item)}>-</button>
+                                       <span>{item?.quantity}</span>
+                                       <button className="quantityBtn" onClick={() => addItem(item)}>+</button>
+                                   </Stack>
+                               </TableCell>
+                               <TableCell>${(item?.quantity * item?.price).toFixed(2)}</TableCell>
+                           </TableRow>
+                       ))
+                   ) : (
+                       <TableRow>
+                           <TableCell colSpan={4}>No items in the cart.</TableCell>
+                       </TableRow>
+                   )}
+               </TableBody>
+           </Table>
+       </TableContainer>
 
-            {/* sub-total */}
-            <Box className='total' sx={{ mt: 2 }}>
-                Grand Total: ${subTotal.toFixed(2)}
-            </Box>
-        </Box>
+       {/* sub-total */}
+       <Box className='total' sx={{ mt: 2 }}>
+           Grand Total: ${subTotal.toFixed(2)}
+       </Box>
+   </Box></div>
+       
     );
 };
 

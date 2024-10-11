@@ -64,7 +64,7 @@ const AboutPage = () => {
             </Grid2>
 
             {/* Mission Section */}
-            <Box sx={{ mt: 5 }}>
+            <Box sx={{ mt: 3 }}>
                 <Paper elevation={3} sx={{ p: 4, display: 'flex', alignItems: 'center' }}>
                     <MissionIcon sx={{ fontSize: 50, mr: 4 }} color="primary" />
                     <Box>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import PersistentDrawerLeft from '../components/common/PersistentDrawerLeft';
+import TopNav from '../components/common/TopNav';
 
 
 // Main content styling
@@ -31,9 +31,10 @@ const HomePage = () => {
         setOpen(false);
     };
 
+
     return (
         <>
-            <PersistentDrawerLeft
+            <TopNav
                 open={open}
                 handleDrawerOpen={handleDrawerOpen}
                 handleDrawerClose={handleDrawerClose}

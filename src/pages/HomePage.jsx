@@ -1,25 +1,3 @@
-// import React from 'react'
-// import { Outlet } from 'react-router-dom'
-// import TopNav from '../components/common/TopNav'
-// import PersistentDrawerLeft from '../components/common/PersistentDrawerLeft'
-
-
-// const HomePage = () => {
-
-//     return (
-//         <>
-//             {/* <TopNav /> */}
-//             <PersistentDrawerLeft />
-//             <main style={{ paddingTop: '64px', backgroundColor: '#f5f5f5' }}>
-//                 <Outlet />
-//             </main>
-//         </>
-//     )
-// }
-
-// export default HomePage
-
-
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
@@ -35,7 +13,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
             duration: theme.transitions.duration.leavingScreen,
         }),
         marginLeft: open ? 240 : 0,
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             marginLeft: 0,
         },
     })

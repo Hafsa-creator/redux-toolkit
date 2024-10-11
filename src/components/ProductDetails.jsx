@@ -81,60 +81,60 @@ const ProductDetails = () => {
 
 
     return (
-        <div style={{ padding: '40px 0' }}>
+        <div style={{ padding: '40px 0', height: '100vh' }}>
             <Box
                 sx={{
-                    width: '88%', margin: 'auto',
+                    width: { xs: '88%', sm: '600px', md: '800px', lg: '1000px', xl: '1200px' },
+                    margin: 'auto', padding: '12px',
+
                     display: 'flex', justifyContent: 'center',
                     flexDirection: { xs: 'column', md: 'row' },
+
                     backgroundColor: '#ffffff', boxShadow: 2,
                     borderColor: 'rgba(0,0,0,0.1)', borderRadius: '7px',
+
                     overflow: 'hidden',
+                    boxSizing: 'border-box',
                 }}>
 
                 {/* product image */}
-                <Box
-                    sx={{
-                        display: 'flex', justifyContent: 'center', alignItems: 'center',
-                        width: { xs: '100%', md: '40%' },
-                        height: 'auto',
-                        padding: { sm: "15px", md: "30px" },
-                        overflow: 'hidden',
-                    }}
-                >
-                    <img
-                        src={product?.image}
-                        alt="Product Image"
-                        style={{
-                            maxWidth: '90%',
-                            height: 'auto',
-                            maxHeight: '450px',
-                            objectFit: 'cover',
-                        }}
-                    />
-                </Box>
+                <Box sx={{
+                    width: { xs: '100%', md: '40%' },
+                    height: { xs: '250px', md: '400px' },
+
+                    my: { xs: 2, md: 'none' },
+                    m: { md: 3 },
+                    boxSizing: 'border-box',
+
+                    backgroundImage: `url(${product?.image})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: "no-repeat",
+                }}
+                ></Box>
 
                 {/* product details */}
                 <Box
                     sx={{
                         width: { sm: '100%', md: '60%' },
-                        display: 'flex', flexDirection: 'column',
-                        justifyContent: 'space-around',
+                        display: 'flex', flexDirection: 'column', justifyContent: 'space-around',
+                        p: { xs: 2, md: 4 },
+                        boxSizing: 'border-box',
+
                         borderTop: { xs: '1px solid #ddd', md: 'none' },
                         borderLeft: { md: '1px solid #ddd' },
-                        p: { xs: 2, md: 4 },
                     }}
                 >
                     {/* title + price */}
                     <Box>
                         <Typography variant="h4"
                             sx={{
-                                fontSize: { xs: '1.5rem', md: '2.2rem' },
+                                fontSize: { xs: '1.2rem', md: '2rem' },
                             }}
                         >
                             {product?.title}
                         </Typography>
-                        <Typography variant='h6' sx={{ color: 'GrayText', fontWeight: 'bold', mt: 2.5 }}>
+                        <Typography variant='h6' sx={{ color: 'GrayText', fontWeight: 'bold', mt: 1.5 }}>
                             Price: ${product?.price}
                         </Typography>
                     </Box>
@@ -143,7 +143,7 @@ const ProductDetails = () => {
 
                     {/* description */}
                     <Box>
-                        <Typography variant="body1">
+                        <Typography variant="body1" sx={{ fontSize: { xs: '14px ', md: '16px' } }}>
                             {product?.description}
                         </Typography>
                     </Box>

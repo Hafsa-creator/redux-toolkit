@@ -6,7 +6,7 @@ const ContactPage = () => {
 
     return (
         <div style={{ padding: '40px 0', height: '100vh' }}>
-            <Paper elevation={3} sx={{ maxWidth: '88%', p: 3, mx: { xs: 2, md: 'auto'} }}>
+            <Paper elevation={3} sx={{ maxWidth: '88%', p: 3, mx: { xs: 2, md: 'auto'}, borderRadius: '7px' }}>
                 
                 <Typography variant="h4">
                     Contact Us
